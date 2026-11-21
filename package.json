@@ -1,0 +1,11 @@
+{
+  "name": "classroom-preparation-assistant",
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "start": "node --env-file-if-exists=.env.local server.js"
+  },
+  "dependencies": {
+    "openai": "^7.62.0"
+  }
+}

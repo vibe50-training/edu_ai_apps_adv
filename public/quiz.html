@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>퀴즈 생성기 | 수업 준비 도우미</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="js/form-check.js" defer></script>
+  <script src="js/csv.js" defer></script>
+  <script src="js/copy-text.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">✦</span><span>수업 준비 도우미<small>교사를 위한 수업 도구</small></span></a>
+      <nav aria-label="수업 도구">
+        <p class="nav-label">수업 도구</p>
+        <a class="nav-link active" aria-current="page" href="quiz.html"><span aria-hidden="true">▤</span> 퀴즈 생성기</a>
+        <a class="nav-link" href="activity.html"><span aria-hidden="true">◇</span> 학습활동 추천</a>
+      </nav>
+      <p class="sidebar-note">수업 준비를 위한<br>작은 아이디어부터 차근차근.</p>
+    </aside>
+    <main class="main">
+      <header class="page-header">
+        <span class="eyebrow">QUIZ BUILDER</span>
+        <h1>퀴즈 생성기</h1>
+        <p>수업에 맞는 퀴즈를 위한 정보를 입력해 주세요.</p>
+      </header>
+      <div class="workspace">
+        <section class="card" aria-labelledby="form-title">
+          <div class="card-heading"><span class="step">01</span><div><h2 id="form-title">퀴즈 설정</h2><p>수업에 맞게 항목을 채워 주세요.</p></div></div>
+          <form class="input-form" data-preview-form data-kind="quiz" novalidate>
+            <div class="field"><label for="subject">과목 <span class="required">필수</span></label><input id="subject" name="과목" type="text" maxlength="30" required data-rule="30자 이내로"><span class="field-error" id="subject-error"></span></div>
+            <div class="field"><label for="grade">학년 <span class="required">필수</span></label><select id="grade" name="학년" required data-rule="초1~고3 중 하나로"><option value="">학년을 선택해 주세요</option><option>초1</option><option>초2</option><option>초3</option><option>초4</option><option>초5</option><option>초6</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select><span class="field-error" id="grade-error"></span></div>
+            <div class="field"><label for="topic">주제(단원) <span class="required">필수</span></label><input id="topic" name="주제(단원)" type="text" maxlength="200" required data-rule="200자 이내로" placeholder="예: 식물의 한살이"><span class="field-error" id="topic-error"></span></div>
+            <div class="field"><label for="material">학습 내용 <span class="optional">선택</span></label><textarea id="material" name="학습 내용" maxlength="2000" rows="4" data-rule="2,000자 이내로" placeholder="퀴즈에 활용할 수업 자료를 입력해 주세요."></textarea><span class="field-hint">입력한 내용을 바탕으로 퀴즈를 만듭니다.</span><span class="field-error" id="material-error"></span></div>
+            <div class="field"><label for="count">문항 수 <span class="required">필수</span></label><input id="count" name="문항 수" type="number" min="1" max="20" step="1" value="5" required data-rule="1~20 사이 정수로"><span class="field-error" id="count-error"></span></div>
+            <div class="field"><label for="type">문항 유형 <span class="required">필수</span></label><select id="type" name="문항 유형" required data-rule="선택형(4지), OX, 단답형 중 하나로"><option value="선택형">선택형(4지)</option><option value="OX">OX</option><option value="단답형">단답형</option></select><span class="field-error" id="type-error"></span></div>
+            <div class="field"><label for="difficulty">난이도 <span class="required">필수</span></label><select id="difficulty" name="난이도" required data-rule="쉬움, 보통, 어려움 중 하나로"><option>쉬움</option><option selected>보통</option><option>어려움</option></select><span class="field-error" id="difficulty-error"></span></div>
+            <button type="submit">퀴즈 생성 <span aria-hidden="true">→</span></button>
+          </form>
+        </section>
+        <section class="card result-card" aria-labelledby="result-title">
+          <div class="card-heading"><span class="step">02</span><div><h2 id="result-title">결과</h2><p>형식을 검증한 문항입니다.</p></div></div>
+          <div class="result-content" aria-live="polite">
+            <div class="empty-state" data-empty><span class="empty-icon" aria-hidden="true">✧</span><p>아직 결과가 없습니다. 입력 후 버튼을 눌러 주세요.</p></div>
+            <p data-status role="status" hidden></p>
+            <div data-result hidden></div>
+            <button type="button" data-retry hidden>다시 시도</button>
+          </div>
+          <p class="prototype-note">AI가 만든 내용의 정확성을 수업 전에 확인해 주세요.</p>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
