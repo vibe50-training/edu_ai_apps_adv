@@ -43,7 +43,10 @@ function validFigure(figure) {
 }
 
 function validFigures(question) {
-  if (question.figures === undefined) return true;
+  if (question.figures === undefined) {
+    // 그림이 없는데 문제나 보기가 그림을 가리키면 교사가 쓸 수 없는 문항이다.
+    return ![question.question, ...question.options].some((text) => typeof text === "string" && text.includes("그림"));
+  }
   return question.type === "선택형" && Array.isArray(question.figures) &&
     question.figures.length === 4 && question.figures.every(validFigure);
 }

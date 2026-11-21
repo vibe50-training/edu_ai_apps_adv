@@ -48,7 +48,10 @@ const server = http.createServer(async (req, res) => {
   }
   try {
     const content = await fs.readFile(file);
-    res.writeHead(200, { "Content-Type": `${types[path.extname(file)]}; charset=utf-8` });
+    res.writeHead(200, {
+      "Content-Type": `${types[path.extname(file)]}; charset=utf-8`,
+      "Cache-Control": "no-cache",
+    });
     res.end(req.method === "HEAD" ? undefined : content);
   } catch (error) {
     if (error.code === "ENOENT" || error.code === "EISDIR") {

@@ -99,6 +99,8 @@ test("퀴즈 입력과 생성 문항의 수용 기준을 검증한다", () => {
     assert.equal(validate(quizInput, [{ ...question, figures: changes }]), false, JSON.stringify(changes));
   }
   assert.equal(validate(oxInput, [{ ...oxQuestion, figures }]), false, "OX에는 보기 도형 없음");
+  assert.equal(validate(quizInput, [{ ...question, question: "그림을 보고 고르세요." }]), false, "그림이라고 했는데 도형 없음");
+  assert.equal(validate(quizInput, [{ ...question, question: "그림을 보고 고르세요.", figures }]), true, "그림이라고 하고 도형 있음");
 
   const shortInput = { ...quizInput, type: "단답형" };
   const shortQuestion = { ...question, type: "단답형", options: ["", "", "", ""], answer: "뿌리" };
